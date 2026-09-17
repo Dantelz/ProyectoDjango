@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dante Zurlo</title>
+  <meta name="description" content="Portfolio personal de Dante Zurlo, desarrollador web.">
+
+  <link rel="icon" type="image/jpg" href="assets/images.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Slabo+13px&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <header class="navbar" id="navbar">
+    <div class="navbarinner">
+      <a href="#inicio" class="navbarbrand">GZ<span class="cursor"></span></a>
+
+      <nav class="navbarlinks">
+        <a href="#sobre-mi">Sobre mi</a>
+        <a href="#tecnologias">Habilidades</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar a tema claro" title="Cambiar tema">
+        <i class="fa-solid fa-sun" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <main>
+    <section id="inicio" class="section bienvenida">
+      <a class="welcome-link" href="assets/CV_Dante_Zurlo.pdf" target="_blank" rel="noopener" aria-label="Abrir el CV de Dante en una nueva pestaña">
+        <div class="sectioncard">
+          <div class="welcome-heading">
+            <h1>Hola, soy Dante</h1>
+            <span class="cv-action"><i class="fa-solid fa-download" aria-hidden="true"></i> CV</span>
+          </div>
+          <p>Bienvenido a mi portfolio, descarga mi CV</p>
+        </div>
+      </a>
+    </section>
+
+    <section id="sobre-mi" class="section sobremi">
+      <details class="sectioncard sectioncard--about">
+       <summary>
+        <h2>Sobre mi</h2>
+        <span class="about-subtitle">Soy estudiante y desarrollador web</span>
+        <i class="fa-solid fa-chevron-down about-chevron" aria-hidden="true"></i>
+      </summary>
+        <div class="about-expanded">
+          <p>Soy Dante Zurlo, estudiante y desarrollador web. Me interesa transformar ideas en experiencias digitales claras, dinámicas y con personalidad. Disfruto aprender programando, probar tecnologías nuevas y mejorar cada proyecto a partir de lo que voy descubriendo.</p>
+          <p>Mis proyectos combinan programación, diseño y resolución de problemas. Cada uno me permite practicar una parte diferente del desarrollo: desde la lógica de un juego hasta la organización de datos y la creación de una experiencia visual completa.</p>
+        </div>
+      </details>
+    </section>
+
+    <section id="tecnologias" class="section tecnologias">
+      <div class="sectioncard">
+        <h2>Habilidades</h2>
+        <p>Programacion · Desarrollo web · HTML · CSS · Bootstrap · Python · Pygame · Tkinter · SQL · JSON · Estructuras de Datos · Algoritmos · Diseño Grafico</p>
+      </div>
+    </section>
+
+    <section id="proyectos" class="section proyectos">
+  <div class="sectioncard sectioncard--wide">
+    <h2>Mis proyectos</h2>
+    <p>Estos son algunos de mis proyectos.</p>
+
+    <div id="carouselExampleIndicators" class="carousel slide carousel-proyectos" data-bs-ride="carousel">
+
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+           <a href="https://github.com/Dantelz/save-obama-wishlist-on-steam" target="_blank" rel="noopener" class="projectslideshow proyectoobama">
+            <img src="assets/obamamenu.jpg" alt="Save Obama Menu" style="animation-delay: 0s;">
+            <img src="assets/obamacaptura1.jpg" alt="Save Obama Gameplay" style="animation-delay: 3s;">
+            <img src="assets/obamacaptura2.jpg" alt="Save Obama Gameplay" style="animation-delay: 6s;">
+          </a>
+            <div class="carousel-caption project-caption">
+              <span class="project-number">01</span>
+              <h3>Save Obama</h3>
+              <p>Proyecto basado en el juego Mr.President, pero con un enfoque mas divertido con movilidad en 2D y con el deber de salvar a Obama</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+          <a href="https://github.com/Dantelz/slithergz" target="_blank" rel="noopener" class="projectslideshow proyectoslither">
+            <img src="assets/slithermenu.png" alt="Slither GZ Menu" style="animation-delay: 0s;">
+            <img src="assets/slithercaptura1.png" alt="Slither GZ Gameplay" style="animation-delay: 3s;">
+            <img src="assets/slithercaptura2.png" alt="Slither GZ Gameplay" style="animation-delay: 6s;">
+          </a>
+          <div class="carousel-caption project-caption">
+            <span class="project-number">02</span>
+            <h3>Slither GZ</h3>
+            <p>Reinterpretación del clásico juego Slither.io, con serpientes enemigas generadas por IA.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <a href="https://github.com/Dantelz/El-Verdadero-Pokemon" target="_blank" rel="noopener" class="projectslideshow proyectopokemon">
+            <img src="assets/pokemonmenu1.jpg" alt="Pokemon Menu Inicio" style="animation-delay: 0s;">
+            <img src="assets/pokemonmenu2.jpg" alt="Pokemon Menu Principal" style="animation-delay: 3s;">
+            <img src="assets/pokemonmenu3.jpg" alt="Pokemon Pokedex" style="animation-delay: 6s;">
+          </a>
+          <div class="carousel-caption project-caption">
+            <span class="project-number">03</span>
+            <h3>El Verdadero Pokémon</h3>
+            <p>Aventura con menús, pantallas de juego y una Pokédex conectadas en una experiencia visual del Verdadero Pokémon.</p>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <footer class="footer" id="contacto">
+  <div class="footer-content">
+
+    <a href="https://www.instagram.com/dantzrlo"
+       target="_blank"
+       rel="noopener"
+       class="footer-link">
+      <i class="fa-brands fa-instagram"></i>
+      <span>@dantzrlo</span>
+    </a>
+
+    <a href="https://www.linkedin.com/in/DanteZurlo"
+       target="_blank"
+       rel="noopener"
+       class="footer-link">
+      <i class="fa-brands fa-linkedin"></i>
+      <span>DanteZurlo</span>
+    </a>
+
+    <a href="https://github.com/Dantelz"
+       target="_blank"
+       rel="noopener"
+       class="footer-link">
+      <i class="fa-brands fa-github"></i>
+      <span>Dantelz</span>
+    </a>
+
+    <a href="https://mail.google.com/mail/u/0/?service=mail&flowName=GlifWebSignIn&flowEntry=AccountChooser&ec=asw-gmail-globalnav-signin#inbox?compose=DmwnWrRnXmkcDPpMTGZzvlZGVpRxJRFpZQsxXRQVZNvPwWpxbSCLMmzbkSwxrRLHKMfwnVpfrjkq"
+       target="_blank"
+       rel="noopener"
+       class="footer-link">
+      <i class="fa-solid fa-envelope"></i>
+      <span>dantlzurl@gmail.com</span>
+    </a>
+
+  </div>
+</footer>
+<script>
+  const themeToggle = document.querySelector('#theme-toggle');
+  const savedTheme = localStorage.getItem('portfolio-theme');
+
+  if (savedTheme === 'light') {
+    document.body.classList.add('light-theme');
+    themeToggle.setAttribute('aria-label', 'Cambiar a tema oscuro');
+    themeToggle.innerHTML = '<i class="fa-solid fa-moon" aria-hidden="true"></i>';
+  }
+
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light-theme');
+    localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+    themeToggle.setAttribute('aria-label', isLight ? 'Cambiar a tema oscuro' : 'Cambiar a tema claro');
+    themeToggle.innerHTML = `<i class="fa-solid fa-${isLight ? 'moon' : 'sun'}" aria-hidden="true"></i>`;
+  });
+</script>
+</body>
