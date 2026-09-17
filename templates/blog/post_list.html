@@ -1,0 +1,43 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}Blog | Dante Zurlo{% endblock %}
+{% block content %}
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <p class="eyebrow"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i> Apuntes de proceso</p>
+    <h1>El blog de Dante</h1>
+    <p class="blog-intro">Ideas, proyectos y pequeñas obsesiones que aparecen mientras aprendo a construir en la web.</p>
+  </div>
+</section>
+<section class="posts-section" aria-labelledby="latest-posts">
+  <div class="posts-heading">
+    <div>
+      <p class="eyebrow">Archivo reciente</p>
+      <h2 id="latest-posts">Últimas entradas</h2>
+    </div>
+    <span class="post-count">{{ posts|length }} {% if posts|length == 1 %}entrada{% else %}entradas{% endif %}</span>
+  </div>
+  <div class="post-grid">
+    {% for post in posts %}
+      <article class="post-card">
+        <a class="post-media" href="{{ post.get_absolute_url }}" aria-label="Leer {{ post.title }}">
+          {% if post.media %}
+            {% with media_url=post.media.url %}<img src="{{ media_url }}" alt="Imagen de {{ post.title }}">{% endwith %}
+          {% else %}
+            <img src="{% static post.media_url %}" alt="Imagen de {{ post.title }}">
+          {% endif %}
+          <span class="post-arrow"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
+        </a>
+        <div class="post-card-body">
+          <p class="post-date">{{ post.created_at|date:"d.m.Y" }}</p>
+          <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+          <p>{{ post.excerpt }}</p>
+          <a class="read-link" href="{{ post.get_absolute_url }}">Leer entrada <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </article>
+    {% empty %}
+      <div class="empty-state"><i class="fa-regular fa-compass" aria-hidden="true"></i><h3>El blog está por comenzar.</h3><p>Las próximas entradas aparecerán aquí.</p></div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

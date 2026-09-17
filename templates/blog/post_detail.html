@@ -1,0 +1,43 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}{{ post.title }} | Blog{% endblock %}
+{% block content %}
+<article class="post-detail">
+  <a class="back-link" href="{% url 'blog:list' %}"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Todas las entradas</a>
+  <header class="post-detail-header">
+    <p class="post-date">{{ post.created_at|date:"d.m.Y" }} · Blog personal</p>
+    <h1>{{ post.title }}</h1>
+    <p class="post-lead">{{ post.excerpt }}</p>
+  </header>
+  <figure class="detail-media">
+    {% if post.media %}
+      <img src="{{ post.media.url }}" alt="Imagen de {{ post.title }}">
+    {% else %}
+      <img src="{% static post.media_url %}" alt="Imagen de {{ post.title }}">
+    {% endif %}
+  </figure>
+  <div class="post-copy">{{ post.content|linebreaks }}</div>
+</article>
+<section class="comments-section" id="comentarios" aria-labelledby="comments-title">
+  <div class="comments-heading"><p class="eyebrow">Conversación</p><h2 id="comments-title">Comentarios <span>{{ post.comments.count }}</span></h2></div>
+  <div class="comments-layout">
+    <div class="comment-list">
+      {% for comment in post.comments.all %}
+        <article class="comment">
+          <div class="comment-meta"><strong>{{ comment.author_name }}</strong><time datetime="{{ comment.created_at|date:'c' }}">{{ comment.created_at|date:"d/m/Y" }}</time></div>
+          <p>{{ comment.body|linebreaksbr }}</p>
+        </article>
+      {% empty %}
+        <p class="no-comments">Todavía no hay comentarios. Sé la primera persona en dejar una idea.</p>
+      {% endfor %}
+    </div>
+    <form class="comment-form" method="post">
+      {% csrf_token %}
+      <h3>Deja tu comentario</h3>
+      <p class="form-note">Los comentarios quedan visibles y pueden ser eliminados por administración.</p>
+      {% for field in form %}<div class="field-group"><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% for error in field.errors %}<small class="form-error">{{ error }}</small>{% endfor %}</div>{% endfor %}
+      <button class="primary-button" type="submit">Publicar comentario <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+    </form>
+  </div>
+</section>
+{% endblock %}

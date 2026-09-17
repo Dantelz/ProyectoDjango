@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Blog | Dante Zurlo{% endblock %}</title>
+  <meta name="description" content="Blog personal de Dante Zurlo.">
+  <link rel="icon" type="image/jpeg" href="{% static 'assets/images.jfif' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Slabo+13px&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body class="blog-page">
+  <header class="navbar" id="navbar">
+    <div class="navbarinner">
+      <a href="{% url 'home' %}" class="navbarbrand">GZ<span class="cursor"></span></a>
+      <nav class="navbarlinks" aria-label="Navegación principal">
+        <a href="{% url 'home' %}#sobre-mi">Sobre mí</a>
+        <a href="{% url 'home' %}#proyectos">Proyectos</a>
+        <a href="{% url 'blog:list' %}" class="active">Blog</a>
+        <a href="{% url 'home' %}#contacto">Contacto</a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar a tema claro" title="Cambiar tema">
+        <i class="fa-solid fa-sun" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+
+  <main class="blog-main">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer blog-footer">
+    <div class="footer-content">
+      <a href="{% url 'home' %}" class="footer-link"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i><span>Volver al portfolio</span></a>
+      <a href="https://github.com/Dantelz" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-github" aria-hidden="true"></i><span>Dantelz</span></a>
+    </div>
+  </footer>
+  <script>
+    const themeToggle = document.querySelector('#theme-toggle');
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    if (savedTheme === 'light') {
+      document.body.classList.add('light-theme');
+      themeToggle.setAttribute('aria-label', 'Cambiar a tema oscuro');
+      themeToggle.innerHTML = '<i class="fa-solid fa-moon" aria-hidden="true"></i>';
+    }
+    themeToggle.addEventListener('click', () => {
+      const isLight = document.body.classList.toggle('light-theme');
+      localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+      themeToggle.setAttribute('aria-label', isLight ? 'Cambiar a tema oscuro' : 'Cambiar a tema claro');
+      themeToggle.innerHTML = `<i class="fa-solid fa-${isLight ? 'moon' : 'sun'}" aria-hidden="true"></i>`;
+    });
+  </script>
+</body>
+</html>
