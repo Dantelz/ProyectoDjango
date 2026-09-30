@@ -4,16 +4,16 @@
 {% block content %}
 <section class="blog-hero">
   <div class="blog-hero-inner">
-    <p class="eyebrow"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i> Apuntes de proceso</p>
+    <p class="eyebrow"> Apuntes de proceso</p>
     <h1>El blog de Dante</h1>
-    <p class="blog-intro">Ideas, proyectos y pequeñas obsesiones que aparecen mientras aprendo a construir en la web.</p>
+    <p class="blog-intro">Ideas y proyectos que aparecen mientras aprendo a construir en la web.</p>
   </div>
 </section>
 <section class="posts-section" aria-labelledby="latest-posts">
   <div class="posts-heading">
     <div>
       <p class="eyebrow">Archivo reciente</p>
-      <h2 id="latest-posts">Últimas entradas</h2>
+      <h2 id="latest-posts">Ultimas entradas</h2>
     </div>
     <span class="post-count">{{ posts|length }} {% if posts|length == 1 %}entrada{% else %}entradas{% endif %}</span>
   </div>
@@ -36,7 +36,7 @@
         </div>
       </article>
     {% empty %}
-      <div class="empty-state"><i class="fa-regular fa-compass" aria-hidden="true"></i><h3>El blog está por comenzar.</h3><p>Las próximas entradas aparecerán aquí.</p></div>
+      <div class="empty-state"><i class="fa-regular fa-compass" aria-hidden="true"></i><h3>El blog esta por comenzar.</h3><p>Las próximas entradas aparecerán aquí.</p></div>
     {% endfor %}
   </div>
 </section>

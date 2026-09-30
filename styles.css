@@ -14,9 +14,7 @@ body {
 }
 
 body.blog-page {
-    background:
-        linear-gradient(rgba(36, 16, 47, 0.86), rgba(36, 16, 47, 0.96)),
-        url("assets/escamas.png") center top / cover fixed;
+    background: #24102f;
 }
 
 .navbar {
