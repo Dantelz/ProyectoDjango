@@ -9,13 +9,69 @@
     <h1>{{ post.title }}</h1>
     <p class="post-lead">{{ post.excerpt }}</p>
   </header>
-  <figure class="detail-media">
-    {% if post.media %}
-      <img src="{{ post.media.url }}" alt="Imagen de {{ post.title }}">
-    {% else %}
-      <img src="{% static post.media_url %}" alt="Imagen de {{ post.title }}">
-    {% endif %}
-  </figure>
+  {% if post.slug == "detras-de-mis-proyectos-de-juegos" %}
+    <div id="gamesCarousel" class="carousel slide carousel-proyectos" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#gamesCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Save Obama"></button>
+        <button type="button" data-bs-target="#gamesCarousel" data-bs-slide-to="1" aria-label="Slither GZ"></button>
+        <button type="button" data-bs-target="#gamesCarousel" data-bs-slide-to="2" aria-label="El Verdadero Pokémon"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <a href="https://github.com/Dantelz/save-obama-wishlist-on-steam" target="_blank" rel="noopener" class="projectslideshow proyectoobama">
+            <img src="{% static 'assets/obamamenu.jpg' %}" alt="Save Obama: menú" style="animation-delay: 0s;">
+            <img src="{% static 'assets/obamacaptura1.jpg' %}" alt="Save Obama: gameplay" style="animation-delay: 3s;">
+            <img src="{% static 'assets/obamacaptura2.jpg' %}" alt="Save Obama: gameplay" style="animation-delay: 6s;">
+          </a>
+          <div class="carousel-caption project-caption">
+            <span class="project-number">01</span>
+            <h3>Save Obama</h3>
+            <p>Un juego 2D inspirado en Mr. President, con el objetivo de salvar a Obama.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <a href="https://github.com/Dantelz/slithergz" target="_blank" rel="noopener" class="projectslideshow proyectoslither">
+            <img src="{% static 'assets/slithermenu.png' %}" alt="Slither GZ: menú" style="animation-delay: 0s;">
+            <img src="{% static 'assets/slithercaptura1.png' %}" alt="Slither GZ: gameplay" style="animation-delay: 3s;">
+            <img src="{% static 'assets/slithercaptura2.png' %}" alt="Slither GZ: gameplay" style="animation-delay: 6s;">
+          </a>
+          <div class="carousel-caption project-caption">
+            <span class="project-number">02</span>
+            <h3>Slither GZ</h3>
+            <p>Una reinterpretación de Slither.io con serpientes enemigas controladas por IA.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <a href="https://github.com/Dantelz/El-Verdadero-Pokemon" target="_blank" rel="noopener" class="projectslideshow proyectopokemon">
+            <img src="{% static 'assets/pokemonmenu1.jpg' %}" alt="El Verdadero Pokémon: inicio" style="animation-delay: 0s;">
+            <img src="{% static 'assets/pokemonmenu2.jpg' %}" alt="El Verdadero Pokémon: menú" style="animation-delay: 3s;">
+            <img src="{% static 'assets/pokemonmenu3.jpg' %}" alt="El Verdadero Pokémon: Pokédex" style="animation-delay: 6s;">
+          </a>
+          <div class="carousel-caption project-caption">
+            <span class="project-number">03</span>
+            <h3>El Verdadero Pokémon</h3>
+            <p>Una aventura con pantallas de juego y una Pokédex propia.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#gamesCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#gamesCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+  {% else %}
+    <figure class="detail-media">
+      {% if post.media %}
+        <img src="{{ post.media.url }}" alt="Imagen de {{ post.title }}">
+      {% else %}
+        <img src="{% static post.media_url %}" alt="Imagen de {{ post.title }}">
+      {% endif %}
+    </figure>
+  {% endif %}
   <div class="post-copy">{{ post.content|linebreaks }}</div>
 </article>
 <section class="comments-section" id="comentarios" aria-labelledby="comments-title">
