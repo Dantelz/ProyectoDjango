@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Blog | Dante Zurlo{% endblock %}
+{% block description %}Blog personal de Dante Zurlo.{% endblock %}
+{% block body_class %}blog-page{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'blog/styles.css' %}?v=20261006">
+{% endblock %}
+{% block navbar %}
+  <header class="navbar" id="navbar">
+    <div class="navbarinner">
+      <a href="{% url 'portfolio:home' %}" class="navbarbrand">GZ<span class="cursor"></span></a>
+      <nav class="navbarlinks" aria-label="Navegación principal">
+        <a href="{% url 'portfolio:home' %}#sobre-mi">Sobre mí</a>
+        <a href="{% url 'portfolio:home' %}#Habilidades">Habilidades</a>
+        <a href="{% url 'portfolio:home' %}#proyectos">Proyectos</a>
+        <a href="{% url 'blog:list' %}" class="active">Blog</a>
+        <a href="{% url 'portfolio:home' %}#contacto">Contacto</a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar a tema claro" title="Cambiar tema">
+        <i class="fa-solid fa-sun" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+{% endblock %}
+{% block main_class %}blog-main{% endblock %}
+{% block content %}{% endblock %}
+{% block footer %}
+  <footer class="footer blog-footer">
+    <div class="footer-content">
+      <a href="{% url 'portfolio:home' %}" class="footer-link"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i><span>Volver al portfolio</span></a>
+      <a href="https://github.com/Dantelz" target="_blank" rel="noopener" class="footer-link"><i class="fa-brands fa-github" aria-hidden="true"></i><span>Dantelz</span></a>
+    </div>
+  </footer>
+{% endblock %}

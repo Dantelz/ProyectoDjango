@@ -1,25 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dante Zurlo</title>
-  <meta name="description" content="Portfolio personal de Dante Zurlo, desarrollador web.">
-
-  <link rel="icon" type="image/jpg" href="assets/images.jpg">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Slabo+13px&display=swap" rel="stylesheet">
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-  <link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Dante Zurlo{% endblock %}
+{% block description %}Portfolio personal de Dante Zurlo, desarrollador web.{% endblock %}
+{% block navbar %}
   <header class="navbar" id="navbar">
     <div class="navbarinner">
       <a href="#inicio" class="navbarbrand">GZ<span class="cursor"></span></a>
@@ -28,7 +11,7 @@
         <a href="#sobre-mi">Sobre mi</a>
         <a href="#tecnologias">Habilidades</a>
         <a href="#proyectos">Proyectos</a>
-        <a href="http://127.0.0.1:8000/blog/">Blog</a>
+        <a href="{% url 'blog:list' %}">Blog</a>
         <a href="#contacto">Contacto</a>
       </nav>
 
@@ -37,14 +20,10 @@
       </button>
     </div>
   </header>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <main>
+{% endblock %}
+{% block content %}
     <section id="inicio" class="section bienvenida">
-      <a class="welcome-link" href="assets/CV_Dante_Zurlo.pdf" target="_blank" rel="noopener" aria-label="Abrir el CV de Dante en una nueva pestaña">
+      <a class="welcome-link" href="{% static 'assets/CV_Dante_Zurlo.pdf' %}" target="_blank" rel="noopener" aria-label="Abrir el CV de Dante en una nueva pestaña">
         <div class="sectioncard">
           <div class="welcome-heading">
             <h1>Hola, soy Dante</h1>
@@ -92,9 +71,9 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
            <a href="https://github.com/Dantelz/save-obama-wishlist-on-steam" target="_blank" rel="noopener" class="projectslideshow proyectoobama">
-            <img src="assets/obamamenu.jpg" alt="Save Obama Menu" style="animation-delay: 0s;">
-            <img src="assets/obamacaptura1.jpg" alt="Save Obama Gameplay" style="animation-delay: 3s;">
-            <img src="assets/obamacaptura2.jpg" alt="Save Obama Gameplay" style="animation-delay: 6s;">
+            <img src="{% static 'assets/obamamenu.jpg' %}" alt="Save Obama Menu" style="animation-delay: 0s;">
+            <img src="{% static 'assets/obamacaptura1.jpg' %}" alt="Save Obama Gameplay" style="animation-delay: 3s;">
+            <img src="{% static 'assets/obamacaptura2.jpg' %}" alt="Save Obama Gameplay" style="animation-delay: 6s;">
           </a>
             <div class="carousel-caption project-caption">
               <span class="project-number">01</span>
@@ -104,9 +83,9 @@
         </div>
         <div class="carousel-item">
           <a href="https://github.com/Dantelz/slithergz" target="_blank" rel="noopener" class="projectslideshow proyectoslither">
-            <img src="assets/slithermenu.png" alt="Slither GZ Menu" style="animation-delay: 0s;">
-            <img src="assets/slithercaptura1.png" alt="Slither GZ Gameplay" style="animation-delay: 3s;">
-            <img src="assets/slithercaptura2.png" alt="Slither GZ Gameplay" style="animation-delay: 6s;">
+            <img src="{% static 'assets/slithermenu.png' %}" alt="Slither GZ Menu" style="animation-delay: 0s;">
+            <img src="{% static 'assets/slithercaptura1.png' %}" alt="Slither GZ Gameplay" style="animation-delay: 3s;">
+            <img src="{% static 'assets/slithercaptura2.png' %}" alt="Slither GZ Gameplay" style="animation-delay: 6s;">
           </a>
           <div class="carousel-caption project-caption">
             <span class="project-number">02</span>
@@ -116,9 +95,9 @@
         </div>
         <div class="carousel-item">
           <a href="https://github.com/Dantelz/El-Verdadero-Pokemon" target="_blank" rel="noopener" class="projectslideshow proyectopokemon">
-            <img src="assets/pokemonmenu1.jpg" alt="Pokemon Menu Inicio" style="animation-delay: 0s;">
-            <img src="assets/pokemonmenu2.jpg" alt="Pokemon Menu Principal" style="animation-delay: 3s;">
-            <img src="assets/pokemonmenu3.jpg" alt="Pokemon Pokedex" style="animation-delay: 6s;">
+            <img src="{% static 'assets/pokemonmenu1.jpg' %}" alt="Pokemon Menu Inicio" style="animation-delay: 0s;">
+            <img src="{% static 'assets/pokemonmenu2.jpg' %}" alt="Pokemon Menu Principal" style="animation-delay: 3s;">
+            <img src="{% static 'assets/pokemonmenu3.jpg' %}" alt="Pokemon Pokedex" style="animation-delay: 6s;">
           </a>
           <div class="carousel-caption project-caption">
             <span class="project-number">03</span>
@@ -142,8 +121,8 @@
   </div>
 </section>
 
-  </main>
-
+{% endblock %}
+{% block footer %}
   <footer class="footer" id="contacto">
   <div class="footer-content">
 
@@ -181,21 +160,4 @@
 
   </div>
 </footer>
-<script>
-  const themeToggle = document.querySelector('#theme-toggle');
-  const savedTheme = localStorage.getItem('portfolio-theme');
-
-  if (savedTheme === 'light') {
-    document.body.classList.add('light-theme');
-    themeToggle.setAttribute('aria-label', 'Cambiar a tema oscuro');
-    themeToggle.innerHTML = '<i class="fa-solid fa-moon" aria-hidden="true"></i>';
-  }
-
-  themeToggle.addEventListener('click', () => {
-    const isLight = document.body.classList.toggle('light-theme');
-    localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
-    themeToggle.setAttribute('aria-label', isLight ? 'Cambiar a tema oscuro' : 'Cambiar a tema claro');
-    themeToggle.innerHTML = `<i class="fa-solid fa-${isLight ? 'moon' : 'sun'}" aria-hidden="true"></i>`;
-  });
-</script>
-</body>
+{% endblock %}

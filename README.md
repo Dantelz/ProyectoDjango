@@ -2,6 +2,16 @@
 
 Portfolio personal y blog construidos con Django.
 
+## Estructura
+
+- `config/`: configuración, rutas y entrada WSGI del proyecto.
+- `portfolio/`: vista, URL y plantilla `index.html` del portfolio.
+- `blog/`: modelos, formularios, vistas, administración, plantillas y estilos del blog.
+- `templates/base.html`: layout compartido por el portfolio y el blog.
+- `static/css/styles.css`: estilos generales y del portfolio.
+- `static/assets/`: imágenes, multimedia y CV.
+- `blog/static/blog/styles.css`: estilos específicos del blog.
+
 ## Puesta en marcha
 
 En Windows, desde la carpeta del proyecto:
