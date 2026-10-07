@@ -4,18 +4,15 @@
 {% block content %}
 <section class="blog-hero">
   <div class="blog-hero-inner">
-    <p class="eyebrow"> Apuntes de proceso</p>
-    <h1>El blog de Dante</h1>
-    <p class="blog-intro">Ideas y proyectos que aparecen mientras aprendo a construir en la web.</p>
+    <h1>Blog Personal - Dante</h1>
+    <p class="blog-intro">Ideas y proyectos que aparecen mientras aprendo a construir en la web</p>
   </div>
 </section>
 <section class="posts-section" aria-labelledby="latest-posts">
   <div class="posts-heading">
     <div>
-      <p class="eyebrow">Archivo reciente</p>
-      <h2 id="latest-posts">Ultimas entradas</h2>
+      <h2 id="latest-posts">Ultimos Posts</h2>
     </div>
-    <span class="post-count">{{ posts|length }} {% if posts|length == 1 %}entrada{% else %}entradas{% endif %}</span>
   </div>
   <div class="post-grid">
     {% for post in posts %}
@@ -32,7 +29,7 @@
           <p class="post-date">{{ post.created_at|date:"d.m.Y" }}</p>
           <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
           <p>{{ post.excerpt }}</p>
-          <a class="read-link" href="{{ post.get_absolute_url }}">Leer entrada <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <a class="read-link" href="{{ post.get_absolute_url }}">Leer Post <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </div>
       </article>
     {% empty %}
