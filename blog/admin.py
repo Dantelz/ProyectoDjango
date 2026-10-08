@@ -11,7 +11,7 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ("title", "content")
     ordering = ("-created_at",)
 
-    @admin.display(description="comentarios")
+    @admin.display(description="Comentarios")
     def comment_count(self, post):
         return post.comments.count()
 

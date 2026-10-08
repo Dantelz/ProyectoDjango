@@ -1,20 +1,24 @@
 # ProyectoDjango
 
-Portfolio personal y blog construidos con Django.
+## Presentacion
 
-## Estructura
+Este proyecto es un sitio web personal hecho con Django. Esta dividido en dos partes: un portfolio, donde se presentan informacion y proyectos, y un blog, donde se pueden leer publicaciones y dejar comentarios.
 
-- `config/`: configuración, rutas y entrada WSGI del proyecto.
-- `portfolio/`: vista, URL y plantilla `index.html` del portfolio.
-- `blog/`: modelos, formularios, vistas, administración, plantillas y estilos del blog.
-- `templates/base.html`: layout compartido por el portfolio y el blog.
-- `static/css/styles.css`: estilos generales y del portfolio.
-- `static/assets/`: imágenes, multimedia y CV.
-- `blog/static/blog/styles.css`: estilos específicos del blog.
+El objetivo fue practicar como se organiza una aplicacion web: los modelos representan los datos, los formularios permiten ingresarlos, las vistas procesan las solicitudes y las plantillas muestran el resultado en el navegador.
 
-## Puesta en marcha
+## Secciones del sitio
 
-En Windows, desde la carpeta del proyecto:
+- **Portfolio (`/`)**: muestra informacion personal, habilidades y proyectos.
+- **Blog (`/blog/`)**: muestra las publicaciones ordenadas desde la mas nueva hasta la mas antigua. Al abrir una publicacion se puede leer su contenido y dejar un comentario.
+- **Administracion (`/admin/`)**: es el panel que Django ofrece para gestionar los datos. Se ingresa con una cuenta creada para el proyecto.
+
+En el blog tambien hay una opcion **Publicar**. Al seleccionarla, se solicitan las credenciales `admin` / `admin` y luego se muestra un formulario para crear una publicacion con titulo, identificador para la URL, resumen, contenido e imagen. En cada publicacion existe la opcion **Eliminar post**, que solicita esas mismas credenciales y, si son correctas, elimina la publicacion y sus comentarios.
+
+> **Importante:** las credenciales `admin` / `admin` estan escritas directamente en el codigo. Se incluyeron para practicar el flujo de publicacion y eliminacion, pero no son seguras. Antes de publicar este sitio en Internet, habria que reemplazarlas por un sistema de usuarios y permisos de Django, y configurar correctamente `SECRET_KEY`, `DEBUG` y `ALLOWED_HOSTS`.
+
+## Como ejecutar el proyecto
+
+Se necesita Python. Django esta declarado como dependencia en `requirements.txt`. En Windows, abri una terminal en la carpeta del proyecto y ejecuta:
 
 ```powershell
 py -m pip install -r requirements.txt
@@ -23,6 +27,31 @@ py manage.py createsuperuser
 py manage.py runserver
 ```
 
-Abrir `http://127.0.0.1:8000/` para el portfolio, `/blog/` para las entradas y `/admin/` para administrar posts y eliminar comentarios.
+El primer comando instala las dependencias. `migrate` prepara la base de datos SQLite y aplica los cambios registrados en las migraciones. `createsuperuser` permite crear una cuenta para ingresar al panel de administracion. Por ultimo, `runserver` inicia el sitio para probarlo localmente.
 
-Las entradas se ordenan automáticamente de la más nueva a la más antigua. Cada post puede tener texto, una imagen o archivo cargado desde el panel y una imagen multimedia de respaldo mediante `media_url`.
+Cuando el servidor este iniciado, se puede acceder a:
+
+- `http://127.0.0.1:8000/` para el portfolio.
+- `http://127.0.0.1:8000/blog/` para el blog.
+- `http://127.0.0.1:8000/admin/` para el panel de administracion.
+
+## Organizacion de los archivos
+
+- `manage.py`: permite ejecutar comandos de Django, como iniciar el servidor y aplicar migraciones.
+- `config/`: contiene la configuracion general del proyecto y las rutas principales.
+- `portfolio/`: contiene la vista, las rutas y la plantilla principal del portfolio.
+- `blog/models.py`: define que informacion se guarda para cada publicacion y comentario.
+- `blog/forms.py`: define los formularios de publicacion y comentarios.
+- `blog/views.py`: procesa las paginas de listado, detalle, publicacion y eliminacion.
+- `blog/urls.py`: conecta las direcciones del blog con sus vistas.
+- `blog/admin.py`: configura como aparecen las publicaciones y los comentarios en el panel de Django.
+- `blog/templates/blog/`: contiene las plantillas del blog. `base.html` define la barra de navegacion y el pie; las otras plantillas muestran el listado, el detalle y el formulario para publicar.
+- `templates/base.html`: contiene la estructura comun de las paginas y el selector de tema claro u oscuro.
+- `static/css/styles.css`: contiene estilos compartidos y del portfolio.
+- `blog/static/blog/styles.css`: contiene estilos propios del blog.
+- `blog/migrations/`: registra cambios en la estructura y las etiquetas de los datos guardados.
+- `blog/tests.py`: contiene pruebas para comprobar las funciones principales del blog.
+- `media/`: es la carpeta configurada para guardar archivos multimedia que se suben a traves de formularios.
+
+
+Las pruebas comprueban, entre otras cosas, que se puedan publicar entradas y comentarios, y que no se elimine una publicacion si las credenciales son incorrectas.

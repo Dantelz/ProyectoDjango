@@ -3,14 +3,19 @@ from django.urls import reverse
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=160)
-    slug = models.SlugField(unique=True)
-    excerpt = models.TextField(max_length=280)
-    content = models.TextField()
-    media = models.FileField(upload_to="blog_media/", blank=True)
-    media_url = models.CharField(max_length=255, blank=True, default="assets/escamas.png")
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    title = models.CharField("Título", max_length=160)
+    slug = models.SlugField("Identificador URL", unique=True)
+    excerpt = models.TextField("Resumen", max_length=280)
+    content = models.TextField("Contenido")
+    media = models.FileField("Archivo multimedia", upload_to="blog_media/", blank=True)
+    media_url = models.CharField(
+        "Ruta de imagen estática",
+        max_length=255,
+        blank=True,
+        default="assets/escamas.png",
+    )
+    created_at = models.DateTimeField("Fecha de creación", auto_now_add=True)
+    updated_at = models.DateTimeField("Última modificación", auto_now=True)
 
     class Meta:
         ordering = ("-created_at",)
@@ -25,11 +30,16 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
-    author_name = models.CharField(max_length=80)
-    author_email = models.EmailField()
-    body = models.TextField(max_length=1000)
-    created_at = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        related_name="comments",
+        verbose_name="Entrada",
+    )
+    author_name = models.CharField("Nombre", max_length=80)
+    author_email = models.EmailField("Correo electrónico")
+    body = models.TextField("Comentario", max_length=1000)
+    created_at = models.DateTimeField("Fecha de creación", auto_now_add=True)
 
     class Meta:
         ordering = ("created_at",)

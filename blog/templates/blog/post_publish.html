@@ -1,0 +1,42 @@
+{% extends 'blog/base.html' %}
+{% block title %}Publicar entrada | Blog{% endblock %}
+{% block content %}
+<section class="posts-section publish-section">
+  {% if form %}
+    <div class="comment-form publish-form">
+      <h1>Publicar una entrada</h1>
+      <p class="form-note">Completa los mismos datos que se solicitan al crear una entrada en el administrador.</p>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form %}
+          <div class="field-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+            {% if field.help_text %}<small class="form-note">{{ field.help_text }}</small>{% endif %}
+            {% for error in field.errors %}<small class="form-error">{{ error }}</small>{% endfor %}
+          </div>
+        {% endfor %}
+        <button class="primary-button" type="submit">Publicar entrada</button>
+      </form>
+    </div>
+  {% else %}
+    <div class="comment-form publish-form">
+      <h1>Acceso de administración</h1>
+      <p class="form-note">Ingresa el usuario y la contraseña para publicar una entrada.</p>
+      {% if auth_error %}<p class="form-error" role="alert">{{ auth_error }}</p>{% endif %}
+      <form method="post">
+        {% csrf_token %}
+        <div class="field-group">
+          <label for="publish-username">Nombre de usuario</label>
+          <input id="publish-username" name="username" type="text" autocomplete="username" required>
+        </div>
+        <div class="field-group">
+          <label for="publish-password">Contraseña</label>
+          <input id="publish-password" name="password" type="password" autocomplete="current-password" required>
+        </div>
+        <button class="primary-button" type="submit">Continuar</button>
+      </form>
+    </div>
+  {% endif %}
+</section>
+{% endblock %}

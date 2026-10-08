@@ -4,7 +4,7 @@
 {% block description %}Blog personal de Dante Zurlo.{% endblock %}
 {% block body_class %}blog-page{% endblock %}
 {% block extra_css %}
-  <link rel="stylesheet" href="{% static 'blog/styles.css' %}?v=20261006">
+  <link rel="stylesheet" href="{% static 'blog/styles.css' %}?v=20261008-2">
 {% endblock %}
 {% block navbar %}
   <header class="navbar" id="navbar">
@@ -17,6 +17,7 @@
         <a href="{% url 'blog:list' %}" class="active">Blog</a>
         <a href="{% url 'portfolio:home' %}#contacto">Contacto</a>
       </nav>
+      <a class="navbar-publish" href="{% url 'blog:publish' %}">Publicar</a>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar a tema claro" title="Cambiar tema">
         <i class="fa-solid fa-sun" aria-hidden="true"></i>
       </button>

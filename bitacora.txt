@@ -1,0 +1,53 @@
+BITACORA
+
+1. Separar las acciones de detalle del post
+
+Dificultad: el detalle del post recibe envios POST tanto para publicar
+comentarios como para solicitar la eliminacion. Si ambos formularios se
+trataran como la misma accion, un envio podria procesarse con el formulario
+equivocado.
+
+Solucion: el formulario de eliminacion envia un campo oculto `action` con el
+valor `delete_post`. La vista `post_detail` distingue esa accion de un envio
+de comentario y procesa cada una por separado. Los formularios conservan el
+token CSRF de Django. Se agregaron pruebas para credenciales incorrectas,
+eliminacion correcta y publicacion de comentarios.
+
+2. Crear publicaciones sin confundir el formulario con Django Admin
+Dificultad: se pidio un boton Publicar en la navegacion y un formulario de
+entrada similar al de administracion, pero que funcionara desde el sitio.
+El panel /admin/ de Django es un flujo separado.
+
+Solucion: se agrego una ruta de publicacion y una vista propia. Primero se
+piden las credenciales definidas para esta funcion; si son correctas, se
+guarda un permiso temporal en la sesion. Despues se muestra `PostForm`, que
+recibe los datos y archivos, guarda la entrada y redirige al detalle recien
+creado. Tambien se comprueba que las credenciales invalidas no habiliten el
+formulario.
+
+Nota de seguridad: las credenciales actuales son `admin` / `admin` y estan
+fijas en el codigo. Este mecanismo es solo una solucion basica para el
+proyecto de practica; no debe usarse en una aplicacion publica. Para eso,
+hay que usar autenticacion de Django y proteger las operaciones con permisos.
+
+3. Traducir nombres de campos del panel
+Dificultad: aunque el idioma del proyecto esta configurado como espanol,
+algunos nombres de campos del modelo, como `slug` y `excerpt`, se mostraban
+con sus identificadores internos en el administrador.
+
+Solucion: se asignaron etiquetas legibles en espanol (`verbose_name`) a los
+campos de los modelos. Como los metadatos de los campos cambiaron, se genero
+la migracion 0002 y se comprobo que no quedaran migraciones pendientes.
+
+4. Mantener los estilos actualizados en el navegador
+Dificultad: tras cambiar estilos del blog, el navegador podia seguir usando
+una copia guardada en cache.
+
+Solucion: se actualizo el parametro de version de la hoja de estilos del
+blog para solicitar al navegador la version nueva.
+
+5. Verificacion final
+Se ejecutaron las pruebas de `blog`: cubren el acceso al formulario de
+publicacion, la creacion de entradas, las credenciales de eliminacion, los
+comentarios y las etiquetas del administrador. Tambien se ejecuto la
+comprobacion del proyecto con `manage.py check`.
