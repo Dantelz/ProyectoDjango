@@ -103,6 +103,12 @@ body.blog-page {
     object-fit: cover;
 }
 
+.post-media--full img,
+.detail-media--full img {
+    object-fit: contain;
+    background: rgba(15, 8, 24, 0.85);
+}
+
 .post-media img { transition: transform 450ms ease; }
 .post-card:hover .post-media img { transform: scale(1.05); }
 

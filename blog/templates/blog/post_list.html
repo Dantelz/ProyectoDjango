@@ -17,7 +17,7 @@
   <div class="post-grid">
     {% for post in posts %}
       <article class="post-card">
-        <a class="post-media" href="{{ post.get_absolute_url }}" aria-label="Leer {{ post.title }}">
+        <a class="post-media{% if post.slug == 'neymar-talento-creatividad-y-vision' or post.slug == 'dei-v-identidad-y-musica-urbana' %} post-media--full{% endif %}" href="{{ post.get_absolute_url }}" aria-label="Leer {{ post.title }}">
           {% if post.media %}
             {% with media_url=post.media.url %}<img src="{{ media_url }}" alt="Imagen de {{ post.title }}">{% endwith %}
           {% else %}

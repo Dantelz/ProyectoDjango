@@ -27,7 +27,7 @@
     <h1>{{ post.title }}</h1>
     <p class="post-lead">{{ post.excerpt }}</p>
   </header>
-  {% if post.slug == "detras-de-mis-proyectos-de-juegos" %}
+  {% if post.slug == "detras-de-mis-proyectos-de-juegos" or post.slug == "desarrollo-de-mis-juegos-anteriores" %}
     <div id="gamesCarousel" class="carousel slide carousel-proyectos" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#gamesCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Save Obama"></button>
@@ -82,7 +82,7 @@
       </button>
     </div>
   {% else %}
-    <figure class="detail-media">
+    <figure class="detail-media{% if post.slug == 'neymar-talento-creatividad-y-vision' or post.slug == 'dei-v-identidad-y-musica-urbana' %} detail-media--full{% endif %}">
       {% if post.media %}
         <img src="{{ post.media.url }}" alt="Imagen de {{ post.title }}">
       {% else %}
